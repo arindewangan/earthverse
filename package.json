@@ -2,6 +2,7 @@
   "name": "earthverse",
   "version": "0.1.0",
   "private": true,
+  "author": "Arin Dewangan",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -9,14 +10,33 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
     "@types/node": "18.11.9",
     "@types/react": "18.0.24",
     "@types/react-dom": "18.0.8",
+    "@what3words/api": "^4.0.7",
+    "@what3words/javascript-components": "^4.0.6",
+    "@what3words/react-components": "^4.0.6",
+    "cross-fetch": "^3.1.5",
+    "dotenv": "^16.0.3",
+    "emotion": "^11.0.0",
     "eslint": "8.26.0",
     "eslint-config-next": "13.0.1",
+    "leaflet": "^1.9.2",
     "next": "13.0.1",
     "react": "18.2.0",
+    "react-camera-pro": "^1.2.1",
     "react-dom": "18.2.0",
-    "typescript": "4.8.4"
+    "react-leaflet": "^4.1.0",
+    "styled-components": "^5.3.6",
+    "typescript": "4.8.4",
+    "wagmi": "^0.7.10"
+  },
+  "devDependencies": {
+    "@types/leaflet": "^1.9.0",
+    "autoprefixer": "^10.4.13",
+    "postcss": "^8.4.18",
+    "tailwindcss": "^3.2.1"
   }
 }
