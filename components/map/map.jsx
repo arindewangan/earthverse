@@ -189,7 +189,7 @@ function Map() {
       )}
       <Header words={words} />   
       <div style={{ position: 'absolute', bottom: '1rem', left: '2rem', right: '2rem', fontSize: '13px', padding: '5px', zIndex: 401,}}>
-        <div className="relative md:w-[fit-content]">
+        <div className="relative w-[fit-content]">
           <div className="flex p-2 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
             <div className='py-2 px-2'>
               {chosenSquares.join(' ')}
