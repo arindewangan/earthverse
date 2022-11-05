@@ -103,7 +103,7 @@ function CameraPopup({ popupOpened, setPopupOpened, chosenSquares,}) {
                             <h1 className="pl-2 pr-10 py-2">Photo:</h1>
                             {imageURL != null ?
                               (
-                                <div className="ml-3 hidden flex-shrink-0 sm:block">
+                                <div className="ml-3 flex-shrink-0">
                                   <img src={imageURL} className="h-16 w-16 rounded-lg object-cover shadow-sm"/>
                                 </div>
                               ):
