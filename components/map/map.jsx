@@ -35,7 +35,8 @@ function Grid({
     map.on('movestart', () => {
       setLineOpacity(0)
     })
-  }, [map, api])
+  }, [map, api, setMoveEnd, setLineOpacity])
+  // }, [map, api])
 
   return null
 }
@@ -59,7 +60,8 @@ function ChosenSquares({
         drawChosenSquares(map, api, chosenSquares, isClaiming, setMoveEnd)
       }
     }
-  }, [chosenSquares, isClaiming, moveEnd])
+  }, [chosenSquares, isClaiming, moveEnd, api, claimed, setMoveEnd, map, words])
+  // }, [chosenSquares, isClaiming, moveEnd])
 
   return null
 }
@@ -119,7 +121,8 @@ function Map() {
     )
 
     return () => navigator.geolocation.clearWatch(id)
-  }, [initialCoords, chosenSquares])
+  }, [initialCoords, chosenSquares, api])
+  // }, [initialCoords, chosenSquares])
 
   useEffect(() => {
     if (isClaiming) return
@@ -132,7 +135,8 @@ function Map() {
       setLineBottom(rect.bottom - 60)
       setLineOpacity(1)
     }
-  }, [moveEnd, chosenSquares, isClaiming])
+  }, [moveEnd, chosenSquares, isClaiming, words])
+  // }, [moveEnd, chosenSquares, isClaiming])
 
   const startTracking = () => {
     setIsClaiming(true)
@@ -179,7 +183,7 @@ function Map() {
       </MapContainer>
       {!isClaiming && (
         <div
-          className="line-text"
+          className=" z-[400] absolute text-blue-500 text-sm font-bold"
           style={{
             top: lineBottom + 15 + 'px',
             left: lineRight + 50 + 'px',

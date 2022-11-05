@@ -6,85 +6,17 @@
 .leaflet-top {
   top: 4rem !important;
 }
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: -apple-system, 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    height: 100vh;
-    max-height: 100vh;
-  }
-  
-  .MuiButtonBase-root.MuiButton-root.MuiButton-contained {
-    font-weight: 900;
-  }
-  
-  .MuiBox-root.css-zxdg2z {
-    position: fixed;
-  }
 
-  .leaflet-container {
-    width: 100%;
-    height: 100vh;
-  }
+.leaflet-container {
+  width: 100%;
+  height: 100vh;
+}
+
+
   
-  .page-header {
-    height: 64px;
-    background-color: #8bc34a;
-    color: #1f1f1f;
-    font-size: 1.3rem;
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    padding: 0 1rem;
-    border-bottom: 2px solid #618833;
-  }
   
-  .header {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    right: 0px;
-    z-index: 401;
-  }
+
   
-  .address-box {
-    position: relative;
-    width: 100%;
-    max-width: 400px;
-    border-bottom: 2px solid #0a3049;
-    box-shadow: 0 0 1px -2px rgb(0 0 0 / 20%), 0 0 2px 0 rgb(0 0 0 / 14%), 0 0 5px 0 rgb(0 0 0 / 12%);
-    padding: 12px;
-    background-color: #fff;
-    color: #0A3049;
-    font-weight: 700;
-    font-size: 18px;
-  }
+
   
-  .red-slashes {
-    color: #e11f26;
-  }
-  
-  .menu-button {
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-  
-  .line-text {
-    z-index: 400;
-    position: absolute;
-    font-size: 18px;
-    color: #1669c7;
-    text-transform: uppercase;
-    font-weight: 900;
-  }
   

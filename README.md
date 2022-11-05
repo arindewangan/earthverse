@@ -3,7 +3,7 @@
 ```console
 git clone https://github.com/arindewangan/earthverse.git
 cd earthverse
-yarn install
+npm install
 ```
 
 2. Create `.env.local` file inside the root folder write all these :

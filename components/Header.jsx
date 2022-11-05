@@ -46,7 +46,7 @@ function Header({words}) {
 
   return (
     <>
-    <div className='header'>
+    <div className='absolute top-0 left-0 right-0 z-[401]'>
       <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5  dark:bg-gray-900">
         <div className="container flex justify-between items-center mx-auto">
           <a href="#" className="flex items-center">

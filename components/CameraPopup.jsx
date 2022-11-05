@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react'
 import { Camera } from 'react-camera-pro'
 import { getSession } from 'next-auth/react';
+import Image from 'next/image';
 
 const errorMessages = {
     noCameraAccessible:
@@ -107,7 +108,7 @@ function CameraPopup({ popupOpened, setPopupOpened, chosenSquares, user }) {
                             {imageURL != null ?
                               (
                                 <div className="ml-3 flex-shrink-0">
-                                  <img src={imageURL} className="h-16 w-16 rounded-lg object-cover shadow-sm"/>
+                                  <Image src={imageURL} alt="claimed land picture" width={64} height={64} className="h-16 w-16 rounded-lg object-cover shadow-sm"/>
                                 </div>
                               ):
                               (
