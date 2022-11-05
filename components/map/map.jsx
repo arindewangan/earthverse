@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { LatLngTuple } from 'leaflet'
 import { MapContainer, TileLayer, useMap } from 'react-leaflet'
 import what3words from '@what3words/api'
-import { What3wordsService } from '@what3words/api/dist/service'
 import { drawChosenSquares, drawGrid } from '../../helpers'
 import Header from '../Header'
 import CameraPopup from '../CameraPopup'

@@ -1,10 +1,8 @@
-import L, { LatLngBoundsExpression, Map } from "leaflet";
-import { What3wordsService } from "@what3words/api/dist/service";
+import L from "leaflet";
 
 const GREEN = '#1ec716'
 
-
-export function drawGrid(map: Map, api: What3wordsService) {
+export function drawGrid(map, api) {
   const zoom = map.getZoom();
   const loadFeatures = zoom > 17;
 
@@ -28,7 +26,7 @@ export function drawGrid(map: Map, api: What3wordsService) {
         },
         format: "geojson",
       })
-      .then(function (data: any) {
+      .then(function (data) {
         // If the grid layer is already present, remove it as it will need to be replaced by the new grid section
         map.eachLayer((l) => {
           if (l.getPane()?.className?.includes("leaflet-overlay-pane")) {
@@ -51,18 +49,18 @@ export function drawGrid(map: Map, api: What3wordsService) {
 }
 
 function addSquare(
-  api: What3wordsService,
-  words: string,
-  color: string,
-  map: Map,
-  pane: string,
-  setMoveEnd: React.Dispatch<React.SetStateAction<number>>
+  api,
+  words,
+  color,
+  map,
+  pane,
+  setMoveEnd
 ) {
   api
     .convertToCoordinates({ words, format: "geojson" })
-    .then(function (data: any) {
+    .then(function (data) {
       const bbox = data.features[0].bbox;
-      const bounds: LatLngBoundsExpression = [
+      const bounds = [
         [bbox[1], bbox[2]],
         [bbox[3], bbox[0]],
       ];
@@ -94,11 +92,11 @@ function addSquare(
 }
 
 export function drawChosenSquares(
-  map: Map,
-  api: What3wordsService,
-  chosenSquares: string[],
-  isClaiming: boolean,
-  setMoveEnd: React.Dispatch<React.SetStateAction<number>>
+  map,
+  api,
+  chosenSquares,
+  isClaiming,
+  setMoveEnd
 ) {
   map.eachLayer((l) => {
     if (!l.getPane("chosen")) {
@@ -116,7 +114,7 @@ export function drawChosenSquares(
         words,
         color,
         map,
-        chosenPane as unknown as string,
+        chosenPane,
         setMoveEnd
       );
     });
