@@ -26,5 +26,5 @@ NEXTAUTH_SECRET=*********************************
 ```console
 npm run dev
 ```
-Footer
+
 © 2022 Arin Dewangan.
