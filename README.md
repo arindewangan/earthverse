@@ -5,10 +5,21 @@ git clone https://github.com/arindewangan/earthverse.git
 cd earthverse
 yarn install
 ```
-2. If you don't have what3words API Key, you can [get it on the what3words web site](https://accounts.what3words.com/create-api-key?referrer=/public-api)
-3. Create `.env.local` file inside the root folder and put your key inside:
+
+2. Create `.env.local` file inside the root folder write all these :
+NEXT_PUBLIC_API_KEY: You can get it here - https://accounts.what3words.com/create-api-key?referrer=/public-api
+APP_DOMAIN: RFC 4501 DNS authority that is requesting the signing.
+MORALIS_API_KEY: You can get it here - https://admin.moralis.io/account/profile
+NEXTAUTH_URL: Your app address. In the development stage, use http://localhost:3000.
+NEXTAUTH_SECRET: Used for encrypting JWT tokens of users. You can put any value here or generate it on https://generate-secret.now.sh/32. 
+
+Here is  an example of .env.local file.
 ```
 NEXT_PUBLIC_API_KEY=********
+APP_DOMAIN=earthverse.app
+MORALIS_API_KEY=**************************************************
+NEXTAUTH_URL=http://localhost:3000
+NEXTAUTH_SECRET=*********************************
 ```
 
 ### Running the website in the development mode

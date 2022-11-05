@@ -2,6 +2,8 @@ import L, { LatLngBoundsExpression, Map } from "leaflet";
 import { What3wordsService } from "@what3words/api/dist/service";
 
 const GREEN = '#1ec716'
+
+
 export function drawGrid(map: Map, api: What3wordsService) {
   const zoom = map.getZoom();
   const loadFeatures = zoom > 17;

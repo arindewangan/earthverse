@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react'
 import { Camera } from 'react-camera-pro'
+import { getSession } from 'next-auth/react';
 
 const errorMessages = {
     noCameraAccessible:
@@ -13,7 +14,7 @@ const errorMessages = {
 
 
 
-function CameraPopup({ popupOpened, setPopupOpened, chosenSquares,}) {
+function CameraPopup({ popupOpened, setPopupOpened, chosenSquares, user }) {
     const [imageURL, setImageURL] = useState(null)
     const [isTaking, setIsTaking] = useState(false)
     const [isSendingData, setIsSendingData] = useState(false)
@@ -25,10 +26,12 @@ function CameraPopup({ popupOpened, setPopupOpened, chosenSquares,}) {
         setImageURL(camera.current.takePhoto())
     }
 
-    const sendData = async () => {
+    const sendData = async (context) => {
         setIsSendingData(true)
         // SEND DATA HERE
-        let data = {chosenSquares:chosenSquares,imageURL:imageURL,price:price};
+        const session = await getSession(context);
+        let user = session.user;
+        let data = {user:user,chosenSquares:chosenSquares,imageURL:imageURL,price:price};
         fetch('/api/getData', {
             method: 'POST',
             headers: {
@@ -140,5 +143,6 @@ function CameraPopup({ popupOpened, setPopupOpened, chosenSquares,}) {
         
     )
 }
+
 
 export default CameraPopup
