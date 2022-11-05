@@ -24,7 +24,7 @@ NEXTAUTH_SECRET=*********************************
 
 ### Running the website in the development mode
 ```console
-yarn dev
+npm run dev
 ```
 Footer
 © 2022 Arin Dewangan.
