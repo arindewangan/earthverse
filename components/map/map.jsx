@@ -7,6 +7,7 @@ import { drawChosenSquares, drawGrid } from '../../helpers'
 import Header from '../Header'
 import CameraPopup from '../CameraPopup'
 import { useSession } from "next-auth/react"
+import Loading from '../Loading'
 
 const GREEN = '#1ec716'
 const options = {
@@ -149,7 +150,11 @@ function Map() {
   }
 
   if (!hasAccessToLocation || !initialCoords)
-    return <div style={{ margin: '2rem' }}>Loading...</div>
+    return(
+      <div style={{ margin: '2rem' }}>
+        <Loading/>
+      </div>
+    )
 
   return (
     <div style={{ position: 'relative' }}>

@@ -1,22 +1,15 @@
+/* Import Tailwind Css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-
+/* Leaflet Css */
 .leaflet-top {
   top: 4rem !important;
 }
-
 .leaflet-container {
   width: 100%;
   height: 100vh;
 }
 
-
-  
-  
-
-  
-
-  
-  
+/* Custom Css */
