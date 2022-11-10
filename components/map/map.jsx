@@ -1,22 +1,23 @@
+// Note -  There are some bugs in this component at what3words and lealet js itegration part, 
+// that needs to be fixed immidiately.
+
 import React, { useEffect, useState } from 'react'
 import { MapContainer, TileLayer, useMap } from 'react-leaflet'
 import what3words from '@what3words/api'
-import { drawChosenSquares, drawGrid } from '../../helpers'
+import { drawChosenSquares, drawGrid, addSquare } from '../../helpers'
 import Header from '../Header'
 import CameraPopup from '../CameraPopup'
 import { useSession } from "next-auth/react"
 import Loading from '../Loading'
 
 const GREEN = '#1ec716'
+const LBLACK = '#443d3d'
 const options = {
   enableHighAccuracy: true,
 }
 
-function Grid({
-  api,
-  setMoveEnd,
-  setLineOpacity,
-}) {
+
+function Grid({ api, setMoveEnd, setLineOpacity, }) {
   const map = useMap()
 
   useEffect(() => {
@@ -34,21 +35,14 @@ function Grid({
     map.on('movestart', () => {
       setLineOpacity(0)
     })
+
   }, [map, api, setMoveEnd, setLineOpacity])
-  // }, [map, api])
 
   return null
 }
 
-function ChosenSquares({
-  api,
-  chosenSquares,
-  isClaiming,
-  words,
-  setMoveEnd,
-  claimed,
-  moveEnd,
-}) {
+
+function ChosenSquares({ api, chosenSquares, isClaiming, words, setMoveEnd, claimed, moveEnd, }) {
   const map = useMap()
 
   useEffect(() => {
@@ -60,10 +54,10 @@ function ChosenSquares({
       }
     }
   }, [chosenSquares, isClaiming, moveEnd, api, claimed, setMoveEnd, map, words])
-  // }, [chosenSquares, isClaiming, moveEnd])
 
   return null
 }
+
 
 function Map() {
   const { data: session } = useSession()
@@ -83,6 +77,7 @@ function Map() {
 
   const api = what3words()
   api.setApiKey(process.env.NEXT_PUBLIC_API_KEY)
+
 
   useEffect(() => {
     const id = navigator.geolocation.watchPosition(
@@ -121,8 +116,8 @@ function Map() {
 
     return () => navigator.geolocation.clearWatch(id)
   }, [initialCoords, chosenSquares, api])
-  // }, [initialCoords, chosenSquares])
 
+  
   useEffect(() => {
     if (isClaiming) return
     const el = document.getElementsByClassName(words + GREEN.slice(1))[0]
@@ -135,7 +130,6 @@ function Map() {
       setLineOpacity(1)
     }
   }, [moveEnd, chosenSquares, isClaiming, words])
-  // }, [moveEnd, chosenSquares, isClaiming])
 
   const startTracking = () => {
     setIsClaiming(true)
@@ -183,6 +177,7 @@ function Map() {
           claimed={claimed}
           moveEnd={moveEnd}
         />
+
       </MapContainer>
       {!isClaiming && (
         <div

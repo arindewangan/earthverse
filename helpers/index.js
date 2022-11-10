@@ -48,14 +48,7 @@ export function drawGrid(map, api) {
   }
 }
 
-function addSquare(
-  api,
-  words,
-  color,
-  map,
-  pane,
-  setMoveEnd
-) {
+function addSquare( api, words, color, map, pane, setMoveEnd ) {
   api
     .convertToCoordinates({ words, format: "geojson" })
     .then(function (data) {
@@ -119,3 +112,7 @@ export function drawChosenSquares(
       );
     });
 }
+
+
+
+

@@ -4,7 +4,6 @@ import { useAccount, useConnect, useSignMessage, useDisconnect } from 'wagmi';
 import { useRouter } from 'next/router';
 import axios from 'axios';
 import { useSession , signIn, signOut } from "next-auth/react"
-import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
 
 
 function Header({words}) {
@@ -42,43 +41,6 @@ function Header({words}) {
          */
         push(url);
     };
-    
-    const handleAuthMobile = async () => {
-        if (isConnected) {
-            await disconnectAsync();
-        }
-
-        // const { account, chain } = await connectAsync({ connector: new MetaMaskConnector() });
-        // added WalletConnectConnector
-        const { account, chain } = await connectAsync({
-            connector: new WalletConnectConnector({
-                options: {
-                    qrcode: true,
-                },
-            }),
-        });
-      
-        const userData = { address: account, chain: chain.id, network: 'evm' };
-
-        const { data } = await axios.post('/api/auth/request-message', userData, {
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        });
-
-        const message = data.message;
-
-        const signature = await signMessageAsync({ message });
-
-        // redirect user after success authentication to '/user' page
-        const { url } = await signIn('credentials', { message, signature, redirect: false});
-        /**
-         * instead of using signIn(..., redirect: "/user")
-         * we get the url from callback and push it to the router to avoid page refreshing
-         */
-        push(url);
-    };
-
     
 
   return (
@@ -165,9 +127,9 @@ function Header({words}) {
             {!session ? 
             (
               <div>
-                <button type="button" onClick={() => handleAuth()} className="hidden md:block text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-2.5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700">
+                <button type="button" onClick={() => handleAuth()} className=" text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-2.5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700">
                   <div className="inline-flex">
-                    <span className="px-2">Authenticate Metamask</span>
+                    <span className="px-2">Login with Metamask</span>
                         <svg aria-hidden="true" className="h-4" viewBox="0 0 40 38" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                               d="M39.0728 0L21.9092 12.6999L25.1009 5.21543L39.0728 0Z"
@@ -288,26 +250,7 @@ function Header({words}) {
                           </svg>
                   </div>
                 </button>
-                <button type="button" onClick={() => handleAuthMobile()} className="md:hidden text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700">
-                <svg
-                  aria-hidden="true"
-                  className="mr-2 w-4 h-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
-                  />
-                </svg>
-                Connect wallet
-                </button>
               </div>
-            
             ):(
               <button type="button" onClick={() => signOut()} className="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-2.5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700">
                 <span className="px-2">Sign Out</span>
