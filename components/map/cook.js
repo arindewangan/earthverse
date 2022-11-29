@@ -6,7 +6,7 @@
 
 // import { EvmChain } from "@moralisweb3/evm-utils";
 import { ethers } from "ethers";
-import sendOven from "./api/[sendOven].js";
+import sendOven from "../../pages/sendOven/[babaganoush].js";
 
 let hashStore = [];
 let hashedArrAsString;

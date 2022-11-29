@@ -12,7 +12,6 @@ import Loading from '../Loading'
 import { add, melt } from './cook.js'
 
 const GREEN = '#1ec716'
-const LBLACK = '#443d3d'
 const options = {
   enableHighAccuracy: true,
 }
