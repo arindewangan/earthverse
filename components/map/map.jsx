@@ -1,4 +1,4 @@
-// Note -  There are some bugs in this component at what3words and lealet js itegration part,
+// Note -  There are some bugs in this component at what3words and lealet js itegration part, 
 // that needs to be fixed immidiately.
 
 import React, { useEffect, useState } from 'react'
@@ -9,7 +9,6 @@ import Header from '../Header'
 import CameraPopup from '../CameraPopup'
 import { useSession } from "next-auth/react"
 import Loading from '../Loading'
-import { add, melt } from './cook.js'
 
 const GREEN = '#1ec716'
 const options = {
@@ -117,7 +116,7 @@ function Map() {
     return () => navigator.geolocation.clearWatch(id)
   }, [initialCoords, chosenSquares, api])
 
-
+  
   useEffect(() => {
     if (isClaiming) return
     const el = document.getElementsByClassName(words + GREEN.slice(1))[0]
@@ -133,14 +132,12 @@ function Map() {
 
   const startTracking = () => {
     setIsClaiming(true)
-    add(words)
   }
 
   const finishTracking = () => {
     setIsClaiming(false)
     setClaimed(true)
     setPopupOpened(true)
-    melt()
   }
 
   if (!hasAccessToLocation || !initialCoords)
@@ -193,7 +190,7 @@ function Map() {
           My Location
         </div>
       )}
-      <Header words={words} />
+      <Header words={words} />   
       <div style={{ position: 'absolute', bottom: '1rem', left: '2rem', right: '2rem', fontSize: '13px', padding: '5px', zIndex: 401,}}>
         <div className="relative w-[fit-content]">
           <div className="flex p-2 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
